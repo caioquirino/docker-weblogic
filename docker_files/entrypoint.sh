@@ -2,7 +2,8 @@
 set -e
 
 # if command starts with an option, prepend mysqld
-if [ "$#" -ne 1 ]; then
+if [ "$#" -gt 0 ]; then
+	echo $0
 	shift; #remove first argument - own entrypoint file
 	`$0`
 	exit $?
@@ -12,16 +13,12 @@ DOMAIN_NAME=mydomain
 DOMAIN_DIR=/weblogic/domains/$DOMAIN_NAME
 MW_HOME=/weblogic/wls12130
 
-if [ -d $DOMAIN_DIR ]; then
-  echo "Configuring weblogic..."
-  $MW_HOME/configure.sh -silent
-  $MW_HOME/wlserver/server/bin/setWLSEnv.sh
+$MW_HOME/wlserver/server/bin/setWLSEnv.sh
 
+if [ -d $DOMAIN_DIR ]; then
   echo "Creating domain..."
   mkdir -p $DOMAIN_DIR
   $MW_HOME/wlserver/common/bin/wlst.sh /weblogic/myDomain.py
 fi
 
-$MW_HOME/wlserver/server/bin/setWLSEnv.sh
-
-$DOMAIN/startWebLogic.sh
+$DOMAIN_DIR/startWebLogic.sh
