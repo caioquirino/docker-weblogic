@@ -29,7 +29,7 @@
 #=======================================================================================
 # Open a domain template.
 #=======================================================================================
-print 'Read template: '
+print 'Reading template... '
 readTemplate("/weblogic/wls12130/wlserver/common/templates/wls/wls.jar")
 
 #=======================================================================================
@@ -40,7 +40,7 @@ readTemplate("/weblogic/wls12130/wlserver/common/templates/wls/wls.jar")
 # In this case, the server instance will determine the address of the machine and
 # listen on it.
 #=======================================================================================
-print 'Create AdminServer: '
+print 'Creating AdminServer... '
 cd('Servers/AdminServer')
 set('ListenAddress','')
 set('ListenPort', 7001)
@@ -53,7 +53,7 @@ set('ListenPort', 7002)
 #=======================================================================================
 # Define the user password for weblogic.
 #=======================================================================================
-print 'Set the password: '
+print 'Setting credentials... '
 cd('/')
 cd('Security/base_domain/User/weblogic')
 cmo.setPassword('weblogic123')
@@ -63,7 +63,7 @@ cmo.setPassword('weblogic123')
 #=======================================================================================
 # Save domain.
 #=======================================================================================
-print 'Write the domain: '
+print 'Writing domain... '
 setOption('OverwriteDomain', 'true')
 setOption('ServerStartMode', 'dev')
 writeDomain('/weblogic/domains/mydomain')
@@ -72,5 +72,6 @@ closeTemplate()
 #=======================================================================================
 # Exit WLST.
 #=======================================================================================
+print 'Domain created successfully.'
 
 exit()
