@@ -26,6 +26,12 @@
 #      <WLST_script> specifies the full path to the WLST script.
 #=======================================================================================
 
+domain_dir = os.environ["DOMAIN_DIR"]
+domain_name = os.environ["DOMAIN_NAME"]
+server_start_mode = os.environ["SERVER_START_MODE"]
+weblogic_passwd = os.environ["WEBLOGIC_PASSWD"]
+
+
 #=======================================================================================
 # Open a domain template.
 #=======================================================================================
@@ -56,7 +62,7 @@ set('ListenPort', 7002)
 print 'Setting credentials... '
 cd('/')
 cd('Security/base_domain/User/weblogic')
-cmo.setPassword('weblogic123')
+cmo.setPassword(weblogic_passwd)
 # Please set password here before using this script, e.g. cmo.setPassword('value')
 
 
@@ -65,8 +71,8 @@ cmo.setPassword('weblogic123')
 #=======================================================================================
 print 'Writing domain... '
 setOption('OverwriteDomain', 'true')
-setOption('ServerStartMode', 'dev')
-writeDomain('/weblogic/domains/mydomain')
+setOption('ServerStartMode', server_start_mode)
+writeDomain(domain_dir + "/" + domain_name)
 closeTemplate()
 
 #=======================================================================================

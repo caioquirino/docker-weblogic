@@ -1,0 +1,17 @@
+weblogic:
+  build: .
+  hostname: weblogic
+  ports:
+    - "7001:7001"
+    - "5005:5005"
+  environment:
+#    - JAVA_OPTIONS=-Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=n
+    - DOMAIN_DIR=/weblogic/domains
+    - DOMAIN_NAME=mydomain
+    - WEBLOGIC_PASSWD=weblogic190
+    - SERVER_START_MODE=dev
+  volumes:
+    - ./domains:/weblogic/domains:rw
+    - ./docker_files/entrypoint.sh:/weblogic/entrypoint.sh:rw
+    - ./docker_files/myDomain.py:/weblogic/myDomain.py:rw
+  command: ls
