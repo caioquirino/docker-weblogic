@@ -15,6 +15,9 @@ RUN apt-get update && \
     /weblogic/build_image.sh && \
     apt-get clean autoclean && \
     apt-get autoremove -y && \
-    rm -rf /var/lib/{apt,dpkg,cache,log}/
+    rm -rf /var/lib/{apt,dpkg,cache,log}/ && \
+    rm -rf /var/tmp/* && \
+    rm -rf /tmp/*
+    
 
 ENTRYPOINT /weblogic/entrypoint.sh
