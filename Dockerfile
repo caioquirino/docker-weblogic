@@ -8,8 +8,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV JAVA_HOME=/usr/lib/jvm/jdk1.8
 ENV MW_HOME=/weblogic/wls12130
 
-VOLUME /weblogic/domains/mydomain
-
 RUN apt-get update && \
     /weblogic/install_jvm.sh && \
     /weblogic/build_image.sh && \
