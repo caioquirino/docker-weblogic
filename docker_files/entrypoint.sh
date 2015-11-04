@@ -20,7 +20,9 @@ fi
 
 $MW_HOME/wlserver/server/bin/setWLSEnv.sh
 
-if [ ! -d "$DOMAIN_DIR/$DOMAIN_NAME" ] ; then
+if [ -d "$DOMAIN_DIR/$DOMAIN_NAME" ] ; then
+  echo "Domain $DOMAIN_DIR/$DOMAIN_NAME already exists. Using it."
+else
   echo "Creating domain..."
 
 	if [ -z "$SERVER_START_MODE" ]; then
