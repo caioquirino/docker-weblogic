@@ -1,7 +1,5 @@
 #!/bin/bash
 function install_weblogic {
-  apt-get install -y unzip
-
   cd /weblogic/
   echo "Downloading weblogic..."
   wget --progress=bar:force --no-check-certificate "https://www.dropbox.com/s/3h3h839qbk0hjss/w1213d_3.zip" -O wls1213_dev_update3.zip
