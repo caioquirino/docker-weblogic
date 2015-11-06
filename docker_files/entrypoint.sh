@@ -18,7 +18,7 @@ if [ -z "$DOMAIN_NAME" ]; then
 	export DOMAIN_NAME
 fi
 
-$MW_HOME/wlserver/server/bin/setWLSEnv.sh
+$ORACLE_HOME/wlserver/server/bin/setWLSEnv.sh
 
 if [ -d "$DOMAIN_DIR/$DOMAIN_NAME" ] ; then
   echo "Domain $DOMAIN_DIR/$DOMAIN_NAME already exists. Using it."
@@ -39,7 +39,7 @@ else
 
   mkdir -p $DOMAIN_DIR/$DOMAIN_NAME
 	set +e
-  $MW_HOME/wlserver/common/bin/wlst.sh /weblogic/myDomain.py
+  $ORACLE_HOME/wlserver/common/bin/wlst.sh /weblogic/myDomain.py
 	if [ $? -ne 0 ]; then
 		echo "Failed to create domain $DOMAIN_DIR/$DOMAIN_NAME."
 		rm -rf $DOMAIN_DIR/$DOMAIN_NAME

@@ -1,12 +1,21 @@
-Weblogic 12c - 12.1.3 docker container
+Weblogic 12c R2 - 12.2.1 docker container
+
+
+# Supported tags and respective `Dockerfile` links
+
+-	[`12.1.3`, `12.1` (*12.1/Dockerfile*)](https://github.com/caioquirino/docker-weblogic/blob/12.1/Dockerfile) [![](https://badge.imagelayers.io/caioquirino/weblogic:12.1.svg)](https://imagelayers.io/?images=caioquirino/weblogic:12.1 'Get your own badge on imagelayers.io')
+-	[`12.2.1`, `12.2`, `12c`, `latest` (*latest/Dockerfile*)](https://github.com/caioquirino/docker-weblogic/blob/master/Dockerfile) [![](https://badge.imagelayers.io/caioquirino/weblogic:latest.svg)](https://imagelayers.io/?images=caioquirino/weblogic:latest 'Get your own badge on imagelayers.io')
+
 
 # How to use this image
 
 ## Start a `Weblogic` server instance
 Starting a Weblogic server instance is simple:
-```bash
-docker run --name my-weblogic -e WEBLOGIC_PASSWD=weblogic123 -d caioquirino/weblogic:latest
-```
+  ```bash
+  docker run --name my-weblogic \
+    -e WEBLOGIC_PASSWD=weblogic123 \
+    -d caioquirino/weblogic:latest
+  ```
 
 ## Where to Store Data
 
@@ -16,7 +25,12 @@ Create a data directory on the host system (outside the container) and [mount th
 2.	Start your `weblogic` container like this:
 
   ```bash
-	$ docker run --name my-weblogic -v /my/own/domain_dir:/weblogic/domains -e WEBLOGIC_PASSWD=weblogic123 -d caioquirino/weblogic:latest
+	docker run \
+    --name my-weblogic \
+    -P \
+    -v /my/own/domain_dir:/weblogic/domains \
+    -e WEBLOGIC_PASSWD=weblogic123 \
+    -d caioquirino/weblogic:latest
 	```
 
 

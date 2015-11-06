@@ -36,7 +36,7 @@ weblogic_passwd = os.environ["WEBLOGIC_PASSWD"]
 # Open a domain template.
 #=======================================================================================
 print 'Reading template... '
-readTemplate("/weblogic/wls12130/wlserver/common/templates/wls/wls.jar")
+readTemplate("/weblogic/wls1221/oracle/wlserver/common/templates/wls/wls.jar")
 
 #=======================================================================================
 # Configure the Administration Server and SSL port.

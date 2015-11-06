@@ -4,7 +4,7 @@ ADD docker_files/build_image.sh /weblogic/build_image.sh
 ADD docker_files/entrypoint.sh /weblogic/entrypoint.sh
 ADD docker_files/myDomain.py /weblogic/myDomain.py
 
-ENV MW_HOME=/weblogic/wls12130
+ENV ORACLE_HOME=/weblogic/wls1221/oracle
 
 RUN apk add --update bash && \
     apk add --update wget && \
@@ -13,6 +13,6 @@ RUN apk add --update bash && \
     rm -rf /var/tmp/* && \
     rm -rf /tmp/* && \
     rm -rf /var/cache/*
-    
+
 
 ENTRYPOINT /weblogic/entrypoint.sh
