@@ -19,7 +19,7 @@ function install_weblogic {
   rm -rf $ORACLE_HOME/*
 
   echo "Configuring weblogic..."
-  su -p weblogic -c "cd /; java -jar /weblogic/wls1221/fmw_12.2.1.0.0_wls_quick.jar ORACLE_HOME=$ORACLE_HOME"
+  su -p weblogic -c "cd /; java -jar /weblogic/wls1221/fmw_12.2.1.0.0_wls_quick.jar -ignoreSysPrereqs ORACLE_HOME=$ORACLE_HOME"
   rm -rf /home/weblogic/*
   rm -rf /tmp/*
 }
